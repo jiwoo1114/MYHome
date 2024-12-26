@@ -1,0 +1,28 @@
+
+.shared-box {
+    margin: 20px;
+    height: 100vh;
+        /* 화면 전체 높이 */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        /* 요소들이 박스 안에서 일정 간격을 두고 배치됨 */
+}
+
+.dashed-border {
+    border: 2px dashed #FFFCFC;
+    padding: 20px;
+    flex-grow: 1;
+        /* 남는 공간을 차지하도록 설정 */
+}
+
+.inner-box {
+    background-color: #ECEBEB;
+    padding: 30px;
+     height: 100%;
+     /* .dashed-border 내부 공간을 꽉 채움 */
+    box-sizing: border-box;
+    /* padding과 border를 포함한 크기로 계산 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        /* 그림자 추가 */
+}

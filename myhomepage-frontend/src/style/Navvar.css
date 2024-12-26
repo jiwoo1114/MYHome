@@ -1,0 +1,55 @@
+.Navvar{
+    background-color: #FFFCFC;
+    height: 50px;
+    display: flex;
+}
+
+.navbar-icon {
+    font-size: 40px;
+    /* 아이콘 크기 */
+    color: #333;
+    /* 아이콘 색상 */
+    margin-left: 10PX;
+    margin-top: 5PX;
+    cursor: pointer;
+    /* 클릭 가능 표시 */
+}
+
+.navbar-icon:hover {
+    color: #BEEEEA;
+    /* 호버 시 색상 변경 */
+}
+
+p{
+line-height: 50px;
+margin-left: 10px;
+}
+.navbar-links {
+    list-style: none;
+    /* 기본 리스트 스타일 제거 */
+    display: flex;
+    /* 가로 정렬 */
+    gap: 15px;
+    /* 링크 간 간격 추가 */
+    margin: 0;
+    padding-bottom: 10px;
+    align-items: center;
+    justify-content: flex-end;
+    /* 오른쪽 정렬 */
+    flex-grow: 1;
+    /* 남은 공간을 차지하도록 */
+    margin-right: 20PX;
+}
+
+.navbar-links>li>a {
+    /* 링크에 스타일 추가 */
+    text-decoration: none;
+    /* 링크 밑줄 제거 */
+    color: black;
+}
+
+.navbar-links>li>a:hover {
+    /* 호버 시 스타일 */
+    color: #BEEEEA;
+    /* 링크 색상 변경 */
+}
