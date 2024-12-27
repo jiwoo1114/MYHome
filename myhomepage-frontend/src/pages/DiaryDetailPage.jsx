@@ -1,1 +1,10 @@
-//다이어리 2개 나타나는 곳 
+import DiaryDetail from '../components/post/DiaryDetail'
+
+
+function DiaryDetailPage() {
+    return ( 
+        <DiaryDetail/>
+     );
+}
+
+export default DiaryDetailPage;

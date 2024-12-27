@@ -1,6 +1,10 @@
+
+import {  CircularProgress } from '@mui/material'
 import { useCallback, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { registerUserThunk } from '../../featurs/authSlice'
+
+import '../../style/Signup.css'
 
 
 
@@ -36,8 +40,64 @@ function Signup() {
             console.error('회원가입 에러:', error)
          })
    }, [email, nick, password, confirmPassword, dispatch])
-    return ( 
-        <h1>회원가입</h1>
+
+      //회원가입이 완료 되었을때 보일 컴포넌트
+    if (isSignupComplete) {
+      return (
+         <div className='complete'>
+            <h2>
+               회원가입이 완료되었습니다!
+            </h2>
+            <p style={{
+               color: 'black',
+               fontSize:'25px'
+            }}>
+               로그인 페이지로 이동하거나 다른 작업을 계속 진행할 수 있습니다.
+            </p>
+            <button
+               style={{ marginTop: '20px',color:'#BEEEEA',borderRadius:'5px'}}
+               onClick={() => (window.location.href = '/login')} // 로그인 페이지로 이동
+            >
+               <p style={{color:'black', fontSize:'20px'}}>로그인 하러 가기</p>
+            </button>
+         </div>
+      )
+   }
+
+   return ( 
+      <>
+       <h1>회원가입</h1>
+       
+         {error && (
+            <h3>
+               {error}
+            </h3>
+         )}
+      <form action="submit">
+         <div
+             style={{ 
+            display: 'flex', 
+            flexDirection: 'column', 
+            alignItems: 'center', 
+            justifyContent: 'center', 
+            padding: '20px'
+  }}        
+         >
+
+         <input label="이메일"  value={email} onChange={(e) => setEmail(e.target.value)} placeholder='아이디를 입력해주세요' />
+
+         <input  label="사용자 이름"  value={nick} onChange={(e) => setNick(e.target.value)}  placeholder='사용자이름을 입력해주세요'/>
+
+         <input  label="비밀번호"  type="password"  value={password} onChange={(e) => setPassword(e.target.value)}  placeholder='비밀번호를 입력해주세요' />
+
+         <input  label="비밀번호 확인"  value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}  placeholder='비밀번호를 다시 입력해주세요' />
+
+         <button  onClick={handleSignup} disabled={loading} style={{ marginTop: '20px' }}>
+            {loading ? <CircularProgress size={24} /> : '회원가입'}
+         </button>
+         </div>
+         </form>
+      </> 
         
      );
 }

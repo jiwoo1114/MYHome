@@ -40,7 +40,7 @@ module.exports = class Diary extends Sequelize.Model {
     static associate(db) {
         db.Comment.belongsTo(db.User, {
             foreignKey: 'userId',       // 외래 키 이름
-            targetKey: 'email',            // 참조 대상 키
+            targetKey: 'id',            // 참조 대상 키
         });
 
         

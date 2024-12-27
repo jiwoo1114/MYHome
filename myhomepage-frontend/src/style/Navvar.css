@@ -53,3 +53,9 @@ margin-left: 10px;
     color: #BEEEEA;
     /* 링크 색상 변경 */
 }
+
+svg{
+    text-align: center;
+    margin-top: 5px;
+    width: 20px;
+}

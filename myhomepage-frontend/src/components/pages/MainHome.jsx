@@ -2,13 +2,14 @@
 import '../../style/MainHome.css'
 
 function MainHome() {
-    return (  <main>
+    return (
+       <main>
                <div className="first_box">
             <div className='second_box'></div>
             <div className='TEXTBOX'>
-                <p>nickname</p>
-                <p>email</p>
-            <p>comment</p>
+                <p>nickname:</p>
+                <p>email:</p>
+            <p>comment:</p>
             </div>
         </div>
       
@@ -22,7 +23,7 @@ function MainHome() {
                     <br />
                 </div>
             </div>
-            <p>thumnail...</p>
+                <p style={{marginLeft:'50px'}}>thumnail...</p>
              <div className='thumnail'></div>
             </div>       
         </main>

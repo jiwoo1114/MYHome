@@ -9,32 +9,33 @@ const router = express.Router()
 
 // 회원가입 localhost:8000/auth/join
 router.post('/join', isNotLoggedIn, async (req, res, next) => {
-   const { email, nick, password } = req.body
+   const { email, nick, password } = req.body;
+
+   if (!email || !nick || !password) {
+      return res.status(400).json({
+         success: false,
+         message: '이메일, 닉네임, 비밀번호는 필수 항목입니다.',
+      });
+   }
+
    try {
-      // 이메일로 기존 사용자 검색
-      const exUser = await User.findOne({ where: { email } })
+      const exUser = await User.findOne({ where: { email } });
 
       if (exUser) {
-         // 이미 사용자가 존재할 경우 409 상태코드와 메시지를 JSON 객체로 응답
          return res.status(409).json({
             success: false,
             message: '이미 존재하는 이메일입니다.',
-         })
+         });
       }
 
-      // 이메일 중복 확인을 통과 시 새로운 사용자 계정 생성
+      const hash = await bcrypt.hash(password, 12);
 
-      // 비밀번호 암호화
-      const hash = await bcrypt.hash(password, 12) // 12: salt
-
-      // 새로운 사용자 생성
       const newUser = await User.create({
-         email,    // email로 사용자 생성
+         email,
          nick,
          password: hash,
-      })
+      });
 
-      // 성공 응답 반환
       res.status(201).json({
          success: true,
          message: '사용자가 성공적으로 등록되었습니다.',
@@ -42,40 +43,45 @@ router.post('/join', isNotLoggedIn, async (req, res, next) => {
             email: newUser.email,
             nick: newUser.nick,
          },
-      })
+      });
    } catch (error) {
-      console.error(error)
+      console.error('회원가입 에러:', error);
       res.status(500).json({
          success: false,
          message: '회원가입 중 오류가 발생했습니다.',
-         error,
-      })
+         error: error.message,
+      });
    }
-})
+});
 
 // 로그인 localhost:8000/auth/login
-router.post('/login', isNotLoggedIn, async (req, res, next) => {
+router.post('/login', isNotLoggedIn, (req, res, next) => {
+   const { email, password } = req.body;
+
+   if (!email || !password) {
+      return res.status(400).json({
+         success: false,
+         message: '이메일과 비밀번호는 필수 항목입니다.',
+      });
+   }
+
    passport.authenticate('local', (authError, user, info) => {
       if (authError) {
-         // 로그인 인증 중 에러 발생 시
-         return res.status(500).json({ success: false, message: '인증 중 오류 발생', error: authError })
+         return res.status(500).json({ success: false, message: '인증 중 오류 발생', error: authError });
       }
 
       if (!user) {
-         // 비밀번호 불일치 또는 사용자가 없을 경우
          return res.status(401).json({
             success: false,
             message: info.message || '로그인 실패',
-         })
+         });
       }
 
-      // 인증이 정상적으로 되고 사용자를 로그인 상태로 바꿈
       req.login(user, (loginError) => {
          if (loginError) {
-            return res.status(500).json({ success: false, message: '로그인 중 오류 발생', error: loginError })
+            return res.status(500).json({ success: false, message: '로그인 중 오류 발생', error: loginError });
          }
 
-         // 로그인 성공 시 user 객체와 함께 response
          res.json({
             success: true,
             message: '로그인 성공',
@@ -83,15 +89,17 @@ router.post('/login', isNotLoggedIn, async (req, res, next) => {
                email: user.email,
                nick: user.nick,
             },
-         })
-      })
-   })(req, res, next)
-})
+         });
+      });
+   })(req, res, next);
+});
 
 // 로그아웃 localhost:8000/auth/logout
 router.get('/logout', isLoggedIn, async (req, res, next) => {
+     //사용자를 로그아웃 상태로 바꿈
    req.logout((err) => {
       if (err) {
+         //로그아웃 상태로 바꾸는 중 에러가 났을때
          console.log(err)
 
          return res.status(500).json({
@@ -101,28 +109,30 @@ router.get('/logout', isLoggedIn, async (req, res, next) => {
          })
       }
 
+      //로그아웃 성공시 세션에 저장되어 있던 사용자 id를 삭제해주고 아래와 같은 결과를 response
+      //status code를 주지 않으면 기본값은 200(성공)
       res.json({
          success: true,
          message: '로그아웃에 성공했습니다.',
       })
    })
-})
+});
 
 // 로그인 상태 확인 localhost:8000/auth/status
-router.get('/status', async (req, res, next) => {
+router.get('/status', (req, res) => {
    if (req.isAuthenticated()) {
       res.json({
          isAuthenticated: true,
          user: {
-            email: req.user.email, // email 반환
+            email: req.user.email,
             nick: req.user.nick,
          },
-      })
+      });
    } else {
       res.json({
          isAuthenticated: false,
-      })
+      });
    }
-})
+});
 
-module.exports = router
+module.exports = router;

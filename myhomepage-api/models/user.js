@@ -10,7 +10,7 @@ module.exports = class User extends Sequelize.Model {
                     unique: true,  // 이메일 중복 방지
                     allowNull: false,
                 },
-                nickname: {
+                nick: {
                     type: Sequelize.STRING(50),
                     allowNull: false,
                 },
@@ -35,15 +35,15 @@ module.exports = class User extends Sequelize.Model {
     static associate(db) {
         db.User.hasOne(db.Profile, {
             foreignKey: 'userId',
-            sourceKey: 'email',
+            sourceKey: 'id',
         });
         db.User.hasMany(db.Comment, {
             foreignKey: 'userId',
-            sourceKey: 'email',
+            sourceKey: 'id',
         });
         db.User.hasMany(db.Diary, {
             foreignKey: 'userId',
-            sourceKey: 'email',
+            sourceKey: 'id',
         });
     }
 };

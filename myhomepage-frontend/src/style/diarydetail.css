@@ -1,0 +1,27 @@
+.first {
+    background-color: #D9D9D9;
+    width: 400px;
+    height: 500px;
+    margin: 20px;
+    border-radius: 20px;
+
+}
+
+
+.second {
+    background-color: #D9D9D9;
+    width: 400px;
+    height: 500px;
+    margin: 20px;
+    border-radius: 20px;
+
+}
+
+.img{
+    background-color: #BEEEEA;
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+    margin-left: 100px;
+    margin-top: 50px;
+}

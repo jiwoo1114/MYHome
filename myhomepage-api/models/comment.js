@@ -33,7 +33,7 @@ module.exports = class Comment extends Sequelize.Model {
             // Comment는 User에 속합니다
             db.Comment.belongsTo(db.User, {
             foreignKey: 'userId',  // Comment 테이블의 외래 키
-            targetKey: 'email',       // User의 기본 키
+            targetKey: 'id',       // User의 기본 키
             });
     
             

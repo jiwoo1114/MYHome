@@ -4,6 +4,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { loginUserThunk } from '../../featurs/authSlice'
 
+import '../../style/Login.css'
+
 function Login() {
      const [email, setEmail] = useState('') // 이메일 상태
    const [password, setPassword] = useState('') // 비밀번호 상태
@@ -59,18 +61,17 @@ function Login() {
          )}
 
 
+         <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}>
+            <input label="이메일" name="email" fullWidth margin="normal" value={email} onChange={(e) => setEmail(e.target.value)} className='email' placeholder='아이디를 입력하세요'/>
 
-         <form onSubmit={handleLogin}>
-            <input label="이메일" name="email" fullWidth margin="normal" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <input label="비밀번호" type="password" name="password" fullWidth margin="normal" value={password} onChange={(e) => setPassword(e.target.value)} className='password' placeholder='비밀번호를 입력하세요'/>
 
-            <input label="비밀번호" type="password" name="password" fullWidth margin="normal" value={password} onChange={(e) => setPassword(e.target.value)} />
-
-            <button>
+             <button style={{backgroundColor:'#BEEEEA'}}>
                {loginButtonContent}
             </button>
          </form>
 
-         <p>
+         <p style={{ textAlign: 'center', marginTop: '16px' }}>
             아직 회원이 아니신가요? <Link to="/signup"> 회원가입 페이지로 이동</Link>
          </p>
 

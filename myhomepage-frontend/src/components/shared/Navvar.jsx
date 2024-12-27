@@ -1,13 +1,22 @@
 //상단바
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'
 import '../../style/Navvar.css'
 import { LuNotebookPen } from "react-icons/lu";
 
-function Navvar() {
+import { useCallback } from 'react'
+import { useDispatch } from 'react-redux'
 
-    /* const dispatch = useDispatch()
+import { logoutUserThunk } from '../../featurs/authSlice'
+
+import { GiNotebook } from "react-icons/gi";
+import { IoHome } from "react-icons/io5";
+
+
+const Navvar = ({ isAuthenticated, user }) => {
+
+    const dispatch = useDispatch()
    const navigate = useNavigate()
 
    const handleLogout = useCallback(() => {
@@ -19,7 +28,7 @@ function Navvar() {
          .catch((error) => {
             alert(error)
          })
-   }, [dispatch, navigate]) */
+   }, [dispatch, navigate]) 
 
     
     return ( 
@@ -28,12 +37,27 @@ function Navvar() {
                 <LuNotebookPen className="navbar-icon" />
             </Link>
             <p>Daily Diary</p>
-
-            <ul className="navbar-links">
-                <li><Link to="/signup">Sign Up</Link></li>
-                <li><Link to="/login">Login</Link></li>
-            </ul>
-        </nav>
+         <ul className="navbar-links">
+                {isAuthenticated ? (
+                    <>
+                   <p>{user?.nick}님</p>
+                   <li><Link to = "/diary">< GiNotebook /></Link></li>
+                         <li><Link to = "/Profile"><IoHome /></Link></li>
+                      
+                        <li><Link to="/signup">Sign Up</Link></li>
+                        <li><Link to="/logout" onClick={ handleLogout }>Logout</Link></li>
+                    </>
+                ) : (
+                   <>
+                        <li><Link to = "/diary">< GiNotebook /></Link></li>
+                         <li><Link to = "/Profile"><IoHome /></Link></li>
+                      
+                        <li><Link to="/signup">Sign Up</Link></li>
+                        <li><Link to="/login">Login</Link></li>
+                    </>
+                )}
+               </ul>
+         </nav>
      );
 }
 
