@@ -62,9 +62,9 @@ function Login() {
 
 
          <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}>
-            <input label="이메일" name="email" fullWidth margin="normal" value={email} onChange={(e) => setEmail(e.target.value)} className='email' placeholder='아이디를 입력하세요'/>
+            <input label="이메일" name="email"  margin="normal" value={email} onChange={(e) => setEmail(e.target.value)} className='email' placeholder='아이디를 입력하세요'/>
 
-            <input label="비밀번호" type="password" name="password" fullWidth margin="normal" value={password} onChange={(e) => setPassword(e.target.value)} className='password' placeholder='비밀번호를 입력하세요'/>
+            <input label="비밀번호" type="password" name="password" margin="normal" value={password} onChange={(e) => setPassword(e.target.value)} className='password' placeholder='비밀번호를 입력하세요'/>
 
              <button style={{backgroundColor:'#BEEEEA'}}>
                {loginButtonContent}

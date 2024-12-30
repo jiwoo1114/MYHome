@@ -1,0 +1,38 @@
+.form{
+    display: flex;
+        /* Flexbox 사용 */
+        flex-direction: column;
+        /* 수직 방향으로 정렬 */
+        justify-content: center;
+        /* 세로 중앙 정렬 */
+        align-items: center;
+        /* 가로 중앙 정렬 */
+        height: 100%;
+        /* 부모 요소의 높이를 채움 */
+        padding: 20px;
+        box-sizing: border-box;
+        /* 패딩 포함한 크기 계산 */
+}
+
+input{
+    margin: 10px 0;
+        /* 위아래 여백 추가 */
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 80%;
+        /* 입력창 너비 설정 */
+        max-width: 400px;
+        /* 입력창 최대 너비 */
+}
+
+.text{
+    height: 200px;
+    width: 400px;
+    border-radius: 20px;
+    background-color: #D9D9D9;
+    border: transparent;
+}
+
+
+

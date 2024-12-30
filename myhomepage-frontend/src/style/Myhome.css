@@ -1,0 +1,69 @@
+
+
+.header {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.profile-section {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.profile-box {
+    background-color: #e3f2fd;
+    width: 30%;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.profile-box input {
+    margin-top: 10px;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.comment-section {
+    margin-top: 20px;
+}
+
+.comment-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.comment-table th,
+.comment-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.comment-table th {
+    background-color: #f7f7f7;
+}
+
+.comment-controls {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.comment-controls button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #4caf50;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.comment-controls button:hover {
+    background-color: #45a049;
+}

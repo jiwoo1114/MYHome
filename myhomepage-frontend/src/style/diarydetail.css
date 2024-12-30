@@ -1,27 +1,41 @@
-.first {
+.first, .second {
     background-color: #D9D9D9;
-    width: 400px;
-    height: 500px;
-    margin: 20px;
+    width: 600px;
+    height: 800px;
+    margin: 20px 150px;
     border-radius: 20px;
-
-}
-
-
-.second {
-    background-color: #D9D9D9;
-    width: 400px;
-    height: 500px;
-    margin: 20px;
-    border-radius: 20px;
+    position: relative;
+    
 
 }
 
 .img{
     background-color: #BEEEEA;
-    width: 200px;
-    height: 200px;
+    width: 500px;
+    height: 250px;
     border-radius: 10px;
-    margin-left: 100px;
-    margin-top: 50px;
+    margin-left: 40px;
+    margin-top: 20px;
+}
+
+.confirm{
+    width: 100px;
+    height: 40px;
+}
+
+.textbox {
+    display: flex;
+        /* 가로 정렬 */
+        justify-content: flex-end;
+        /* 오른쪽 정렬 */
+        align-items: flex-end;
+        /* 아래쪽 정렬 */
+        gap: 10px;
+        /* 수정과 삭제 사이 간격 */
+        position: absolute;
+        /* 부모 요소를 기준으로 배치 */
+        bottom: 20px;
+        /* 부모 요소의 아래쪽에서 20px 띄움 */
+        right: 20px;
+        /* 부모 요소의 오른쪽에서 20px 띄움 */
 }
