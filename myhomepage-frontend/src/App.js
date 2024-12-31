@@ -13,7 +13,6 @@ import DiaryDetailPage from './pages/DiaryDetailPage'
 import DiaryCreditPage from './pages/DiaryCreditPage'
 import DiaryEditPage from './pages/DiaryEditPage'
 import MyProfilePage from './pages/MyProfilePage'
-import ProfileChangePage from './pages/ProfileChang'
 //import CommentCreditPage from './pages/CommentCreditForm'
 //import CommentEditPage from './pages/CommentEditPage'
 
@@ -46,7 +45,7 @@ function App() {
           <Route path="/diary/update/:id" element={<DiaryEditPage />} /> 
            {/*프로필 관련 컴포넌트 부분*/}
         <Route path="/profile" element={<MyProfilePage />} />
-          <Route path="/profile/update-profile" element={<ProfileChangePage />} />
+
           {/*댓글 작성 부분*/}
         {/* <Route path="/comment/comments" element={<CommentCreditPage />} />
           <Route path="/comments/:id" element={<CommentEditPage/>} /> */}

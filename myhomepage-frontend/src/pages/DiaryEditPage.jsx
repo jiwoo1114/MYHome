@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { useCallback } from 'react'
 import { useSelector } from 'react-redux';
-import {createDiaryThunk} from '../featurs/diarySlice'
+import {updateDiaryThunk} from '../featurs/diarySlice'
 
 function DiaryEditPage() {
       const { loading } = useSelector((state) => state.diary); // 로딩 상태 가져오기
@@ -21,14 +21,14 @@ function DiaryEditPage() {
         img: 파일객체
       }
       */
-         dispatch(createDiaryThunk(diaryData))
+         dispatch(updateDiaryThunk(diaryData))
             .unwrap()
             .then(() => {
                navigate('/') //게시물 등록 후 메인페이지로 이동
             })
             .catch((error) => {
-               console.error('게시물 등록 에러: ', error)
-               alert('게시물 등록에 실패했습니다.')
+               console.error('게시물 수정 에러: ', error)
+               alert('게시물 수정에 실패했습니다.')
             })
       },
       [dispatch, navigate]
@@ -37,7 +37,7 @@ function DiaryEditPage() {
     return (
        <> 
            <DiaryForm onSubmit={handleSubmit} />
-            {loading && <p>등록 중입니다...</p>} {/* 로딩 상태 표시 */}
+            {loading && <p>수정 중입니다...</p>} {/* 로딩 상태 표시 */}
         </> 
      );
 }

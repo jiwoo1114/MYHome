@@ -65,7 +65,7 @@ export const diarycreate = async (diaryData) => {
                 'Content-Type': 'multipart/form-data', // 파일 전송 시 지정
             },
         };
-        const response = await myhomeApi.post(`diary/create`, diaryData, config);
+        const response = await myhomeApi.post(`/diary/create`, diaryData, config);
         return response;
     } catch (error) {
         console.error(`API Request 오류: ${error.message}`); 
@@ -81,7 +81,7 @@ export const updatePost = async (id, diaryData) => {
                 'Content-Type': 'multipart/form-data', // 파일 전송 시 지정
             },
         };
-        const response = await myhomeApi.put(`diary/update/${id}`, diaryData, config); 
+        const response = await myhomeApi.put(`/diary/update/${id}`, diaryData, config); 
         return response;
     } catch (error) {
         console.error(`API Request 오류: ${error.message}`);
@@ -92,7 +92,7 @@ export const updatePost = async (id, diaryData) => {
 // 다이어리 삭제
 export const deletePost = async (id) => {
     try {
-        const response = await myhomeApi.delete(`diary/delete/${id}`); // Base URL 반영
+        const response = await myhomeApi.delete(`/diary/delete/${id}`); // Base URL 반영
         return response;
     } catch (error) {
         console.error(`API Request 오류: ${error.message}`);
@@ -103,7 +103,7 @@ export const deletePost = async (id) => {
 // 전체 포스트 가져오기(페이징)
 export const getPosts = async (page) => {
     try {
-        const response = await myhomeApi.get(`diary/all`, { params: { page } }); // 페이지 번호 추가
+        const response = await myhomeApi.get(`/diary/all?page=${page}`, { params: { page } }); // 페이지 번호 추가
         return response;
     } catch (error) {
         console.error(`API Request 오류: ${error.message}`);
@@ -149,7 +149,7 @@ export const deleteComment = async (commentId) => {
 // 댓글 전체 조회 API
 export const getComments = async (page = 1) => {
     try {
-        const response = await myhomeApi.get('/comment/all', {
+        const response = await myhomeApi.get(`/comment?page=${page}`, {
             params: { page }, // 쿼리로 페이지 번호 전달
         });
         return response.data; // 댓글 데이터와 페이징 정보 반환
@@ -169,7 +169,7 @@ export const updateProfile = async (formData) => {
             },
         };
 
-        const response = await myhomeApi.post('profile/update-profile', formData, config); // 라우트 경로에 맞게 요청
+        const response = await myhomeApi.post('/profile/update-profile', formData, config); // 라우트 경로에 맞게 요청
         return response.data; // 성공 메시지 반환
     } catch (error) {
         console.error(`프로필/썸네일 업데이트 오류: ${error.message}`);

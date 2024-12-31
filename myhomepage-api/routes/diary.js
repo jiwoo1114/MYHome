@@ -104,6 +104,7 @@ router.delete('/delete/:id', isLoggedIn, async (req, res) => {
 });
 
 // 4. 전체 게시글 조회 (Read - Paginated)
+// localhost:8000/diary/all
 router.get('/all', isLoggedIn, async (req, res) => {
   try {
     const page = parseInt(req.query.page, 10) || 1; // 페이지 번호 (기본값: 1)
@@ -122,6 +123,8 @@ router.get('/all', isLoggedIn, async (req, res) => {
         },
       ],
     });
+
+     console.log('쿼리 결과:', diaries);
 
     res.status(200).json({
       success: true,

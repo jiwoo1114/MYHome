@@ -6,6 +6,12 @@
     margin-bottom: 20px;
 }
 
+.create{
+    width: 100px;
+    background-color: #D9D9D9;
+}
+
+
 .profile-section {
     display: flex;
     justify-content: space-between;
@@ -13,7 +19,7 @@
 }
 
 .profile-box {
-    background-color: #e3f2fd;
+    background-color: #BEEEEA;
     width: 30%;
     padding: 20px;
     border-radius: 10px;
@@ -35,7 +41,7 @@
 .comment-table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 .comment-table th,
@@ -47,6 +53,10 @@
 
 .comment-table th {
     background-color: #f7f7f7;
+}
+
+.comment-table button{
+    width: 80px;
 }
 
 .comment-controls {
