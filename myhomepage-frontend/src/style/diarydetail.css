@@ -1,41 +1,45 @@
-.first, .second {
-    background-color: #D9D9D9;
-    width: 600px;
-    height: 800px;
-    margin: 20px 150px;
-    border-radius: 20px;
-    position: relative;
-    
-
+.first,
+.second {
+   background-color: #d9d9d9;
+   width: 600px;
+   height: 800px;
+   margin: 20px 150px;
+   border-radius: 20px;
+   position: relative;
 }
 
-.img{
-    background-color: #BEEEEA;
-    width: 500px;
-    height: 250px;
-    border-radius: 10px;
-    margin-left: 40px;
-    margin-top: 20px;
+.img {
+   background-color: #beeeea;
+   height: auto; /* 높이는 자동으로 조정 */
+   border-radius: 10px; /* 둥근 모서리 */
+   margin-top: 20px;
+   margin-left: 0; /* margin-left 제거 */
 }
 
-.confirm{
-    width: 100px;
-    height: 40px;
+.title,
+.content {
+   margin-top: 10px;
+   font-size: 16px;
+}
+
+.confirm {
+   width: 100px;
+   height: 40px;
 }
 
 .textbox {
-    display: flex;
-        /* 가로 정렬 */
-        justify-content: flex-end;
-        /* 오른쪽 정렬 */
-        align-items: flex-end;
-        /* 아래쪽 정렬 */
-        gap: 10px;
-        /* 수정과 삭제 사이 간격 */
-        position: absolute;
-        /* 부모 요소를 기준으로 배치 */
-        bottom: 20px;
-        /* 부모 요소의 아래쪽에서 20px 띄움 */
-        right: 20px;
-        /* 부모 요소의 오른쪽에서 20px 띄움 */
+   display: flex;
+   /* 가로 정렬 */
+   justify-content: flex-end;
+   /* 오른쪽 정렬 */
+   align-items: flex-end;
+   /* 아래쪽 정렬 */
+   gap: 10px;
+   /* 수정과 삭제 사이 간격 */
+   position: absolute;
+   /* 부모 요소를 기준으로 배치 */
+   bottom: 20px;
+   /* 부모 요소의 아래쪽에서 20px 띄움 */
+   right: 20px;
+   /* 부모 요소의 오른쪽에서 20px 띄움 */
 }

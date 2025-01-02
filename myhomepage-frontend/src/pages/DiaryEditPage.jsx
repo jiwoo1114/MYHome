@@ -1,15 +1,17 @@
-//다이어리 등록
+//다이어리 수정
 
 import DiaryForm from '../components/post/DiaryForm'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { useCallback } from 'react'
-import { useSelector } from 'react-redux';
-import {updateDiaryThunk} from '../featurs/diarySlice'
+import { useSelector } from 'react-redux'
+import { updateDiaryThunk } from '../featurs/diarySlice'
 
 function DiaryEditPage() {
-      const { loading } = useSelector((state) => state.diary); // 로딩 상태 가져오기
-     const navigate = useNavigate()
+   const { id } = useParams() // URL에서 ID 가져오기
+   console.log('URL에서 가져온 id:', id)
+   const { loading } = useSelector((state) => state.diary) // 로딩 상태 가져오기
+   const navigate = useNavigate()
    const dispatch = useDispatch()
 
    const handleSubmit = useCallback(
@@ -21,25 +23,25 @@ function DiaryEditPage() {
         img: 파일객체
       }
       */
-         dispatch(updateDiaryThunk(diaryData))
+         dispatch(updateDiaryThunk({ data: { id, diaryData } }))
             .unwrap()
             .then(() => {
-               navigate('/') //게시물 등록 후 메인페이지로 이동
+               window.location.href = '/'
             })
             .catch((error) => {
                console.error('게시물 수정 에러: ', error)
                alert('게시물 수정에 실패했습니다.')
             })
       },
-      [dispatch, navigate]
+      [dispatch, navigate, id]
    )
 
-    return (
-       <> 
-           <DiaryForm onSubmit={handleSubmit} />
-            {loading && <p>수정 중입니다...</p>} {/* 로딩 상태 표시 */}
-        </> 
-     );
+   return (
+      <>
+         <DiaryForm onSubmit={handleSubmit} />
+         {loading && <p>수정 중입니다...</p>} {/* 로딩 상태 표시 */}
+      </>
+   )
 }
 
-export default DiaryEditPage;
+export default DiaryEditPage

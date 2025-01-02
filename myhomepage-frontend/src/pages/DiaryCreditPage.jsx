@@ -1,4 +1,4 @@
-//다이어리 수정
+//다이어리 등록
 
 import DiaryForm from '../components/post/DiaryForm'
 import { useNavigate } from 'react-router-dom'
