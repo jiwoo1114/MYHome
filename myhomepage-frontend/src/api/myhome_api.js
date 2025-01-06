@@ -125,7 +125,7 @@ export const createComment = async (commentData) => {
 // 댓글 수정 API
 export const updateComment = async (commentId, updatedContent) => {
    try {
-      const response = await myhomeApi.put(`/comments/update/${commentId}`, { content: updatedContent }) // `/comments/:id` 경로로 PUT 요청
+      const response = await myhomeApi.put(`/comment/update/${commentId}`, { content: updatedContent }) // `/comments/:id` 경로로 PUT 요청
       return response.data // 수정된 댓글 데이터 반환
    } catch (error) {
       console.error(`댓글 수정 오류: ${error.message}`)
@@ -136,7 +136,7 @@ export const updateComment = async (commentId, updatedContent) => {
 // 댓글 삭제 API
 export const deleteComment = async (commentId) => {
    try {
-      const response = await myhomeApi.delete(`/comments/delete/${commentId}`) // `/comments/:id` 경로로 DELETE 요청
+      const response = await myhomeApi.delete(`/comment/delete/${commentId}`) // `/comments/:id` 경로로 DELETE 요청
       return response.data // 삭제 성공 메시지 반환
    } catch (error) {
       console.error(`댓글 삭제 오류: ${error.message}`)
@@ -147,9 +147,10 @@ export const deleteComment = async (commentId) => {
 // 댓글 전체 조회 API
 export const getComments = async (page = 1) => {
    try {
-      const response = await myhomeApi.get(`/comment?page=${page}`, {
+      const response = await myhomeApi.get(`/comment`, {
          params: { page }, // 쿼리로 페이지 번호 전달
       })
+      console.log('API 응답:', response.data) // 서버 응답 데이터 확인
       return response.data // 댓글 데이터와 페이징 정보 반환
    } catch (error) {
       console.error(`댓글 조회 오류: ${error.message}`)

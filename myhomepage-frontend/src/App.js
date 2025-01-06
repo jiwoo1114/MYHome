@@ -8,12 +8,15 @@ import { Route, Routes } from 'react-router-dom'
 import Home from './pages/Home'
 import SignupPage from './pages/SignupPage'
 import LoginPage from './pages/LoginPage'
+// 게시물
 import DiaryDetailPage from './pages/DiaryDetailPage'
 import DiaryCreditPage from './pages/DiaryCreditPage'
 import DiaryEditPage from './pages/DiaryEditPage'
+//프로필
 import MyProfilePage from './pages/MyProfilePage'
-//import CommentCreditPage from './pages/CommentCreditForm'
-//import CommentEditPage from './pages/CommentEditPage'
+//댓글
+import CommentCreditPage from './pages/CommentCreditForm'
+import CommentEditPage from './pages/CommentEditPage'
 
 import { useEffect } from 'react'
 import { checkAuthStatusThunk } from './featurs/authSlice'
@@ -45,10 +48,8 @@ function App() {
                <Route path="/profile" element={<MyProfilePage />} />
 
                {/*댓글 작성 부분*/}
-               {/* <Route path="/comment/create" element={<CommentCreditPage />} />
-          <Route path="/comments/update/:id" element={<CommentEditPage/>} /> */}
-
-               {/* 추가적으로 다른 경로를 설정할 수 있습니다. */}
+               <Route path="/comment/create" element={<CommentCreditPage />} />
+               <Route path="/comment/update/:id" element={<CommentEditPage />} />
             </Routes>
          </SharedBox>
       </>

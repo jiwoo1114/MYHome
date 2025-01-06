@@ -108,3 +108,35 @@
 .comment-table button:hover {
    background-color: #9fe0dc; /* 호버 효과 */
 }
+
+a.create,
+a.update {
+   text-decoration: none;
+   color: black;
+}
+
+.comment-container {
+   margin: 20px auto; /* 부모 요소 여백 설정 */
+   text-align: center; /* 자식 요소를 가운데 정렬 */
+}
+
+a.create {
+   width: 100px;
+   height: 44px;
+   margin-top: 30px;
+   font-size: 20px;
+   background-color: #ebecec;
+}
+
+a.create:hover {
+   text-decoration: underline;
+}
+
+a.update {
+   color: blue;
+   text-decoration: none;
+}
+
+.delete {
+   color: red;
+}
